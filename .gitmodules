@@ -1,0 +1,3 @@
+[submodule "Assets/Core/Scripts/Submodule_BaseFiles"]
+	path = Assets/Core/Scripts/Submodule_BaseFiles
+	url = https://github.com/Juanini/UnityProjectsBaseFiles.git
