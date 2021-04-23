@@ -12,7 +12,5 @@ namespace LifeIsTheGame
         {
             Ins = this;
         }
-
-        
     }
 }
