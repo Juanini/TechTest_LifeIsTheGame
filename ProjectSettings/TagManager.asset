@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI
+    uniqueID: 1638003617
+    locked: 0
+  - name: UI_Shapes
+    uniqueID: 2847485247
+    locked: 0
