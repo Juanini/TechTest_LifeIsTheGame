@@ -9,9 +9,9 @@ namespace LifeIsTheGame
         // * =====================================================================================================================================
         // * WEAPONS
 
-        public const int FIREARM_PARABOL    = 1;
-        public const int FIREARM_BLACKHOLE  = 2;
-        public const int FIREARM_EXTRA      = 3;
+        public const int GUN_PARABOL    = 1;
+        public const int GUN_BLACKHOLE  = 2;
+        public const int GUN_EXTRA      = 3;
 
         // * =====================================================================================================================================
         // * DANCE TYPES

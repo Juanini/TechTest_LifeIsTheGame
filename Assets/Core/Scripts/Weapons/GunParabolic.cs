@@ -4,21 +4,11 @@ using UnityEngine;
 
 namespace LifeIsTheGame
 {
-    public class Firearm : MonoBehaviour
+    public class GunParabolic : Gun
     {
         void Start()
         {
         
-        }
-
-        void Update()
-        {
-        
-        }
-
-        public void Fire()
-        {
-            
         }
     }
 }

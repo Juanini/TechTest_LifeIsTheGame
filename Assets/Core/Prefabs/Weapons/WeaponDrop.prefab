@@ -79,6 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firearmData: {fileID: 11400000, guid: 8124a318abac9c4488de611a3fbef605, type: 2}
   weponModelContainer: {fileID: 314632951224835593}
+  glowParticles: {fileID: 6201266444469566383}
+  boxCollider: {fileID: 1969759313}
   bounceAnimTime: 1
   rotationAnimTime: 2
 --- !u!65 &1969759313
@@ -89,7 +91,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314632952060054193}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -170,5 +172,10 @@ PrefabInstance:
 --- !u!4 &6201266444483722991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9107929416712373023, guid: 3773f91a84091e044aebcf8ca1a06792, type: 3}
+  m_PrefabInstance: {fileID: 2912297845203189232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6201266444469566383 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9107929416726529631, guid: 3773f91a84091e044aebcf8ca1a06792, type: 3}
   m_PrefabInstance: {fileID: 2912297845203189232}
   m_PrefabAsset: {fileID: 0}

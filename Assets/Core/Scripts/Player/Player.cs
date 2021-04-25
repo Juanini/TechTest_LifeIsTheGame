@@ -12,17 +12,19 @@ namespace LifeIsTheGame
 
         [BoxGroup("Components")] public Transform head;
         [BoxGroup("Components")] public FpsController fpsController;
+        [BoxGroup("Components")] public PlayerWeapons playerWeapons;
 
-        private Firearm firearmeActive;
+        private WeaponDrop weaponDropFound;
 
         void Start()
         {
-        
+            
         }
 
         void Update()
         {
             CheckWeaponDrop();
+            CheckPickUp();
 
             if(Input.GetMouseButtonDown(0)) 
             {
@@ -32,14 +34,22 @@ namespace LifeIsTheGame
 
         private void EquipWeapon()
         {
-            
+            Hashtable ht = new Hashtable();
+            ht.Add(GameEventParam.E_WEAPON_PICKED_TYPE, weaponDropFound.firearmData.type);
+            GameEventManager.TriggerEvent(GameEvents.E_WEAPON_PICKED, ht);
+
+            playerWeapons.EquipWeapon(weaponDropFound.firearmData.type);
+            weaponDropFound.HideDrop();
         }
 
         private void CheckPickUp()
         {
             if(Input.GetKey(KeyCode.E))
             {
-                EquipWeapon();
+                if(weaponDropFound != null)
+                {
+                    EquipWeapon();
+                }
             }
         }
 
@@ -57,7 +67,7 @@ namespace LifeIsTheGame
                 float distance = Vector3.Distance(hit.collider.gameObject.transform.position, transform.position);
                 if(distance <= distanceToWeapon)
                 {
-                    OnWeaponLocated();
+                    OnWeaponLocated(hit);
                 }
                 else
                 {
@@ -74,16 +84,20 @@ namespace LifeIsTheGame
         {
             if(weaponLocated) { return; }
             
+            weaponDropFound = null;
+            
             Trace.Log("Weapon not located");
             GameEventManager.TriggerEvent(GameEvents.E_HIDE_WEAPON_PICK_UP);
             weaponLocated = true;
         }
 
-        private void OnWeaponLocated()
+        private void OnWeaponLocated(RaycastHit _hit)
         {
             if(!weaponLocated) { return; }
-            
-            Trace.Log("Weapon not located");
+
+            weaponDropFound = _hit.collider.GetComponent<WeaponDrop>();
+            Trace.Log("Weapon Located! Type: " + weaponDropFound.firearmData.type);
+
             GameEventManager.TriggerEvent(GameEvents.E_SHOW_WEAPON_PICK_UP);
             weaponLocated = false;
         }
