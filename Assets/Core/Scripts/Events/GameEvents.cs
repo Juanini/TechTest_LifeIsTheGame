@@ -17,6 +17,13 @@ namespace LifeIsTheGame
         public static string E_OPEN_SCREEN = "E_OPEN_SCREEN";
 
         // * =====================================================================================================================================
+        // * UI
+
+        public static string E_SHOW_WEAPON_PICK_UP = "E_SHOW_WEAPON_PICK_UP";
+        public static string E_HIDE_WEAPON_PICK_UP = "E_HIDE_WEAPON_PICK_UP";
+
+
+        // * =====================================================================================================================================
         // * UTILS
 
         public static string FPS_TOGGLE = "FPS_TOGGLE";

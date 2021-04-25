@@ -7,6 +7,13 @@ namespace LifeIsTheGame
     public class GameConstants
     {
         // * =====================================================================================================================================
+        // * WEAPONS
+
+        public const int FIREARM_PARABOL    = 1;
+        public const int FIREARM_BLACKHOLE  = 2;
+        public const int FIREARM_EXTRA      = 3;
+
+        // * =====================================================================================================================================
         // * DANCE TYPES
 
         public const int DANCE_TYPE_UNKOWN   = 0;
@@ -17,6 +24,11 @@ namespace LifeIsTheGame
         public const string DANCE_NAME_HOUSE    = "Dance House";
         public const string DANCE_NAME_MACARENA = "Dance Macarena";
         public const string DANCE_NAME_HIP_HOP  = "Dance Hip Hop";
+
+        // * =====================================================================================================================================
+        // * TAG
+
+        public const string TAG_WEAPON_DROP = "WeaponDrop";
 
         // * =====================================================================================================================================
         // * SCENES
