@@ -13,6 +13,7 @@ namespace LifeIsTheGame
         [BoxGroup("Components")] public Transform head;
         [BoxGroup("Components")] public FpsController fpsController;
         [BoxGroup("Components")] public PlayerWeapons playerWeapons;
+        [BoxGroup("Components")] public GameObject shootDir;
 
         private WeaponDrop weaponDropFound;
 
@@ -28,8 +29,16 @@ namespace LifeIsTheGame
 
             if(Input.GetMouseButtonDown(0)) 
             {
-				
+				FireWeapon();
             }
+        }
+
+        // * =====================================================================================================================================
+        // * Weapons
+
+        private void FireWeapon()
+        {
+            playerWeapons.FIre();
         }
 
         private void EquipWeapon()

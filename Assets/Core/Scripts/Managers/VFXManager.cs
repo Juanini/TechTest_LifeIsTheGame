@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace LifeIsTheGame
 {
-    public class GameManager : MonoBehaviour
+    public class VFXManager : MonoBehaviour
     {
-        public static GameManager Ins;
-        public Player player;
+        public static VFXManager Ins;
+        
+        public Pool explosionPool;
 
-        void Awake() 
+        void Awake()
         {
             if (Ins != null && Ins != this)
             {
@@ -19,16 +20,18 @@ namespace LifeIsTheGame
             {
                 Ins = this;
             }
-        }
 
-        void Start()
-        {
-        
+            explosionPool.InitPool();
         }
 
         // * =====================================================================================================================================
-        // * Game Flow
+        // * 
 
-
+        public void ShowExplosion(Vector3 _pos)
+        {
+            GameObject explosionObj = explosionPool.GetPooledObject();
+            explosionObj.transform.position = _pos;
+            explosionObj.gameObject.SetActive(true);
+        }
     }
 }

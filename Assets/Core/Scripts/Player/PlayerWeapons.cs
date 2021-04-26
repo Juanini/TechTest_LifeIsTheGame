@@ -19,6 +19,13 @@ namespace LifeIsTheGame
         private Gun gunBlackHole = null;
         private Gun gunExtra     = null;
 
+        public void FIre()
+        {
+            if(weaponActive == null) { return; }
+
+            weaponActive.Fire();
+        }
+
         public void EquipWeapon(int _gunType)
         {
             switch(_gunType)
@@ -59,6 +66,7 @@ namespace LifeIsTheGame
             gunExtra?.gameObject.SetActive(false);
 
             weaponActive = _gun;
+            weaponActive.shoopPoint.transform.LookAt(GameManager.Ins.player.shootDir.transform);
             weaponActive.gameObject.SetActive(true);
         }
     }
