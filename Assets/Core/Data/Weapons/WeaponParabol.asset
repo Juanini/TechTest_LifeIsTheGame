@@ -15,4 +15,4 @@ MonoBehaviour:
   model: {fileID: 919132149155446097, guid: a72f9fe7b80b521468f6010add1a700d, type: 3}
   type: 1
   bulletAmount: 1
-  bullet: {fileID: 0}
+  bullet: {fileID: 4763848504548716269, guid: a5ba2df1f05de1b4c941f8b93dd4d8c9, type: 3}
