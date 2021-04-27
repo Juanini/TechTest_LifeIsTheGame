@@ -25,6 +25,13 @@ namespace LifeIsTheGame
             SetupEvents();
         }
 
+        private void Start() 
+        {
+            Hashtable ht = new Hashtable();
+            ht.Add(GameEventParam.DANCE_TYPE, SaveDataManager.Ins.LoadInt(DataConstants.DATA_DANCE_SELECTED));
+            GameEventManager.TriggerEvent(GameEvents.E_DANCE_SELECTED, ht);    
+        }
+
         void Update()
         {
         

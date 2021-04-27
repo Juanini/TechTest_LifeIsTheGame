@@ -1,3 +1,4 @@
+using DG.Tweening;
 using GameEventSystem;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
@@ -14,7 +15,13 @@ namespace LifeIsTheGame
         public static MainMenuManager Ins;
 
         [BoxGroup("Elements")] public Button selectButton;
-        [BoxGroup("Elements")] public Button aboutButton;
+        [BoxGroup("Elements")] public List<DanceSelectButton> danceSelectButtonList;
+
+        [BoxGroup("About")] public Button aboutButton;
+        [BoxGroup("About")] public GameObject aboutMenu;
+        [BoxGroup("About")] public Button aboutCloseButton;
+
+        private int danceSelected = 0;
 
         void Awake()
         {
@@ -30,7 +37,7 @@ namespace LifeIsTheGame
             }
 
             SetupEvents();
-            SetupButtons();
+            Setup();
         }
 
         void OnDestroy() 
@@ -41,9 +48,13 @@ namespace LifeIsTheGame
         // * =====================================================================================================================================
         // * Setup
 
-        private void SetupButtons()
+        private void Setup()
         {
+            danceSelectButtonList[0].OnDanceSelect();
             selectButton.onClick.AddListener(OnSelectClick);
+            
+            aboutButton.onClick.AddListener(ShowAbout);
+            aboutCloseButton.onClick.AddListener(CloseAbout);
         }
 
         // * =====================================================================================================================================
@@ -51,7 +62,12 @@ namespace LifeIsTheGame
 
         private void OnDanceSelected(Hashtable _ht)
         {
-            
+            danceSelected = (int)_ht[GameEventParam.DANCE_TYPE];
+
+            for (int i = 0; i < danceSelectButtonList.Count; i++)
+            {
+                danceSelectButtonList[i].SetSelected(false);
+            }
         }
 
         // * =====================================================================================================================================
@@ -59,12 +75,27 @@ namespace LifeIsTheGame
 
         private void OnSelectClick()
         {
+            SaveDataManager.Ins.SaveInt(DataConstants.DATA_DANCE_SELECTED, danceSelected);
             LoadingMenu.Ins.ShowLoading(OnLoadingShowComplete);
         }
 
         private void OnLoadingShowComplete()
         {
+            DOTween.KillAll();
             SceneManager.LoadSceneAsync(GameConstants.SCENE_GAME);
+        }
+
+        // * =====================================================================================================================================
+        // * About
+
+        private void ShowAbout()
+        {
+            aboutMenu.gameObject.SetActive(true);
+        }
+
+        private void CloseAbout()
+        {
+            aboutMenu.gameObject.SetActive(false);
         }
 
         // * =====================================================================================================================================

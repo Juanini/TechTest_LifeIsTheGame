@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace LifeIsTheGame
 {
-    public class DataManager : MonoBehaviour
+public class SaveDataManager : MonoBehaviour
     {
-        public static DataManager Ins;
+        public static SaveDataManager Ins;
 
         void Awake()
         {

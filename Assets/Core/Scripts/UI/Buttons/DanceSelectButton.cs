@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using GameEventSystem;
 using Sirenix.OdinInspector;
@@ -45,30 +46,43 @@ namespace LifeIsTheGame
             }
         }
 
-        private void OnDanceSelect()
+        public void OnDanceSelect()
         {
             Trace.Log("Dance Selected - Type: " + danceType);
 
             Hashtable ht = new Hashtable();
             ht.Add(GameEventParam.DANCE_TYPE, danceType);
             GameEventManager.TriggerEvent(GameEvents.E_DANCE_SELECTED, ht);
+
+            SetSelected(true);
         }
         
-        private void SetSelected(bool _selected)
+        public void SetSelected(bool _selected)
         {
             if(_selected)
             {
-                rectShapes.gameObject.SetActive(true);
+                // rectShapes.gameObject.SetActive(true);
+                PlaySelectAnim();
             }
             else
             {
-                rectShapes.gameObject.SetActive(false);
+                // rectShapes.gameObject.SetActive(false);
+                StopSelectedAnim();
             }
         }
 
+        private Tween selectedAnimTween;
+
         private void PlaySelectAnim()
         {
-            
+            selectedAnimTween = transform.DOScale(new Vector3(0.75f, 0.75f, 0.75f), 0.25f)
+                                         .SetLoops(-1, LoopType.Yoyo);   
+        }
+
+        public void StopSelectedAnim()
+        {
+            selectedAnimTween.Kill();
+            transform.localScale = Vector3.one;
         }
 
         private static IEnumerable DanceTypeOptions = new ValueDropdownList<int>()
