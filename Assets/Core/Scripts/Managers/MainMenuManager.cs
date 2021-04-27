@@ -18,6 +18,8 @@ namespace LifeIsTheGame
 
         void Awake()
         {
+            Application.targetFrameRate = 60;
+            
             if (Ins != null && Ins != this)
             {
                 Destroy(this.gameObject);

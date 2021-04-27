@@ -7,6 +7,11 @@ namespace LifeIsTheGame
     public class GameEventParam
     {
         // * =====================================================================================================================================
+        // * WEAPONS
+
+        public static string E_WEAPON_PICKED_TYPE = "E_WEAPON_PICKED_TYPE";
+
+        // * =====================================================================================================================================
         // * DANCES
 
         public static string DANCE_TYPE = "DANCE_TYPE";
