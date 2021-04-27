@@ -107,7 +107,9 @@ namespace LifeIsTheGame
             weaponDropFound = _hit.collider.GetComponent<WeaponDrop>();
             Trace.Log("Weapon Located! Type: " + weaponDropFound.firearmData.type);
 
-            GameEventManager.TriggerEvent(GameEvents.E_SHOW_WEAPON_PICK_UP);
+            Hashtable ht = new Hashtable();
+            ht.Add(GameEventParam.E_WEAPON_PICKED_TYPE, weaponDropFound.firearmData.type);
+            GameEventManager.TriggerEvent(GameEvents.E_SHOW_WEAPON_PICK_UP, ht);
             weaponLocated = false;
         }
     }

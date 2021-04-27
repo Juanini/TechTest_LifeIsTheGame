@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using GameEventSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,12 @@ namespace LifeIsTheGame
     {
         public static UIManager Ins;
 
-        public GameObject pickUpImage;
+        [BoxGroup("Components")] public GameObject pickUpImage;
+
+        [BoxGroup("Gun Info")] public GameObject gunInfoPanel;
+        [BoxGroup("Gun Info")] public GameObject gunInfoParabol;
+        [BoxGroup("Gun Info")] public GameObject gunInfoBlackHole;
+        [BoxGroup("Gun Info")] public GameObject gunInfoZeroG;
 
         void Awake()
         {
@@ -47,11 +53,36 @@ namespace LifeIsTheGame
 
         public void ShowWeaponPickUp(Hashtable _ht)
         {
+            int wtype = (int)_ht[GameEventParam.E_WEAPON_PICKED_TYPE];
+            
+            gunInfoPanel.gameObject.SetActive(true);
+
+            gunInfoParabol.gameObject.SetActive(false);
+            gunInfoBlackHole.gameObject.SetActive(false);
+            gunInfoZeroG.gameObject.SetActive(false);
+
+
+            switch(wtype)
+            {
+                case GameConstants.GUN_PARABOL:
+                gunInfoParabol.gameObject.SetActive(true);
+                break;
+
+                case GameConstants.GUN_BLACKHOLE:
+                gunInfoBlackHole.gameObject.SetActive(true);
+                break;
+
+                case GameConstants.GUN_EXTRA:
+                gunInfoZeroG.gameObject.SetActive(true);
+                break;
+            }
+
             pickUpImage.gameObject.SetActive(true);
         }
 
         public void HideWeaponPickUp(Hashtable _ht)
         {
+            gunInfoPanel.gameObject.SetActive(false);
             pickUpImage.gameObject.SetActive(false);
         }
 
