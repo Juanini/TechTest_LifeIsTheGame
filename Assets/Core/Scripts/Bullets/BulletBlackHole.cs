@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LifeIsTheGame
 {
-    public class BulletBlackHole : MonoBehaviour
+    public class BulletBlackHole : Bullet
     {
         public float VortexStrength = 1000f;
         private  List<Rigidbody> rigidBodyList;
@@ -33,7 +33,6 @@ namespace LifeIsTheGame
             rigidBodyList.Add(_obj);
         }
 
-        public bool initDone = false;
         void Update()
         {
             //apply the vortex force

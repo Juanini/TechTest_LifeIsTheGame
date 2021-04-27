@@ -47,8 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletBlackHole: {fileID: 3270870259058002075}
-  glowAnimTime: 0.15
-  glowScaleDecrease: 2
 --- !u!33 &2642856865984350943
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -160,9 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5286fc113d0b06448be522eaea1942a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableTime: 8
+  rigidbody: {fileID: 0}
   VortexStrength: 1000
   SwirlStrength: 5
-  initDone: 0
 --- !u!33 &4763848504548716263
 MeshFilter:
   m_ObjectHideFlags: 0
