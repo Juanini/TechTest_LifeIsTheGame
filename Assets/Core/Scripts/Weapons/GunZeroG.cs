@@ -6,10 +6,13 @@ namespace LifeIsTheGame
 {
     public class GunZeroG : Gun
     {
-        public float force = 10;
+        public float BulletForce = 10;
 
         public override void Fire()
         {
+            if(!canShoot) { return; }
+            CheckFire();
+
             ThrowBullet();   
         }
 
@@ -22,7 +25,7 @@ namespace LifeIsTheGame
             Rigidbody rigidbody = bullet.GetComponent<Rigidbody>();
             
             rigidbody.velocity = Vector3.zero;
-            rigidbody.AddForce(shoopPoint.transform.forward * force, ForceMode.Impulse);
+            rigidbody.AddForce(shoopPoint.transform.forward * BulletForce, ForceMode.Impulse);
 
             DoRecoilAnim();
         }

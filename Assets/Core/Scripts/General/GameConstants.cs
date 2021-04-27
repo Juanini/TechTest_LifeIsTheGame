@@ -31,6 +31,7 @@ namespace LifeIsTheGame
         public const string TAG_WEAPON_DROP = "WeaponDrop";
         public const string TAG_VFX_GRAVITY_GLOW = "VFXGravityGlow";
         public const string TAG_VFX_EXPLOSION = "VFXExplosion";
+        public const string TAG_FLOOR = "Floor";
 
         // * =====================================================================================================================================
         // * SCENES

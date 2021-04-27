@@ -11,40 +11,40 @@ namespace LifeIsTheGame
 		[BoxGroup("Components")] public Camera cam;
 		[BoxGroup("Components")] public Transform crosshairTransform;
 
-        [Header( "Player Movement" )] [Range( 0.8f, 1f )] public float smoof = 0.99f;
-		public float moveSpeed = 1f;
-		public float lookSensitivity = 1f;
-		float yaw;
-		float pitch;
-		Vector2 moveInput = Vector2.zero;
-		Vector3 moveVel = Vector3.zero;
+        [BoxGroup("Player Movement")] [Range( 0.8f, 1f )] public float smoof = 0.99f;
+		[BoxGroup("Player Movement")]public float moveSpeed = 1f;
+		[BoxGroup("Player Movement")]public float lookSensitivity = 1f;
 
-        void Start()
-        {
-            
-        }
+		private float yaw;
+		private float pitch;
+		private Vector2 moveInput = Vector2.zero;
+		private Vector3 moveVel = Vector3.zero;
 
         void Awake() 
         {
-			if( Application.isPlaying == false )
+			if(Application.isPlaying == false)
             {
 				return;
             }
 
 			InputFocus = true;
-			StartCoroutine( FixedSteps() );
+			StartCoroutine(FixedSteps());
 		}
 
-        IEnumerator FixedSteps() {
-			while( true ) {
+        IEnumerator FixedSteps() 
+		{
+			while(true)
+			{
 				FixedUpdateManual();
-				yield return new WaitForSeconds( 0.01f ); // 100 fps
+				yield return new WaitForSeconds(0.01f);
 			}
 		}
 
-        bool InputFocus {
+        bool InputFocus
+		{
 			get => !Cursor.visible;
-			set {
+			set 
+			{
 				Cursor.lockState = value ? CursorLockMode.Locked : CursorLockMode.None;
 				Cursor.visible = !value;
 			}
@@ -76,32 +76,13 @@ namespace LifeIsTheGame
 				return;
             }
 
-			if( InputFocus ) 
+			if(InputFocus) 
             {
 				// mouselook
 				yaw += Input.GetAxis( "Mouse X" ) * lookSensitivity;
 				pitch -= Input.GetAxis( "Mouse Y" ) * lookSensitivity;
 				pitch = Mathf.Clamp( pitch, -90, 90 );
 				head.localRotation = Quaternion.Euler( pitch, yaw, 0f );
-
-				if(Input.GetKey(KeyCode.R))
-                {
-					// ammoBar.Reload();
-                }
-
-				// actions
-				if(Input.GetMouseButtonDown(0)) 
-                {
-					// Fire
-					// ammoBar.Fire();
-					// crosshair.Fire();
-
-					Ray ray = new Ray( head.position, head.forward );
-					if( Physics.Raycast( ray, out RaycastHit hit ) && hit.collider.gameObject.name == "Enemy" )
-                    {
-						// crosshair.FireHit();
-                    }
-				}
 
 				// move input
 				moveInput = Vector2.zero;
@@ -114,20 +95,14 @@ namespace LifeIsTheGame
                     }
 				}
 
-				// DoInput( KeyCode.W, Vector2.up );
-				// DoInput( KeyCode.S, Vector2.down );
-				// DoInput( KeyCode.D, Vector2.right );
-				// DoInput( KeyCode.A, Vector2.left );
+                DoInput( KeyCode.W, Vector2.up );
+				DoInput( KeyCode.S, Vector2.down );
+				DoInput( KeyCode.D, Vector2.right );
+				DoInput( KeyCode.A, Vector2.left );
 
-                DoInput( KeyCode.U,    Vector2.up );
-				DoInput( KeyCode.J,  Vector2.down );
-				DoInput( KeyCode.K, Vector2.right );
-				DoInput( KeyCode.H,  Vector2.left );
-
-				// leave focus mode stuff
-				if( Input.GetKeyDown( KeyCode.Escape ) )
-					InputFocus = false;
-			} else if( Input.GetMouseButtonDown( 0 ) ) {
+			} 
+			else if(Input.GetMouseButtonDown(0)) 
+			{
 				InputFocus = true;
 			}
 		}

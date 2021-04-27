@@ -129,7 +129,7 @@ MonoBehaviour:
   rotationInPlayer: {x: 0, y: 170, z: 0}
   recoilDistance: 0.05
   recoilTime: 0.1
-  force: 40
+  BulletForce: 30
 --- !u!1001 &1412911760902470503
 PrefabInstance:
   m_ObjectHideFlags: 0

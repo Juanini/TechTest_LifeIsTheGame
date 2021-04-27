@@ -7,16 +7,14 @@ namespace LifeIsTheGame
 {
     public class GunParabolic : Gun
     {
-        public float yModifier = 0.7f;
-        public float throwForce = 5f;
-
-        void Start()
-        {
-            
-        }
-
+        [BoxGroup("Properties")] public float yModifier = 0.7f;
+        [BoxGroup("Properties")] public float bulletForce = 5f;
+        
         public override void Fire()
         {
+            if(!canShoot) { return; }
+            CheckFire();
+            
             ThrowBullet();
         }
 
@@ -29,12 +27,10 @@ namespace LifeIsTheGame
             Rigidbody rigidbody = bullet.GetComponent<Rigidbody>();
             
             rigidbody.velocity = Vector3.zero;
-        
-            Trace.Log("FORWARD: " + shoopPoint.transform.forward);
 
             rigidbody.AddForce(new Vector3( shoopPoint.transform.forward.x, 
                                             shoopPoint.transform.forward.y + yModifier, 
-                                            shoopPoint.transform.forward.z) * throwForce, ForceMode.Impulse); // Working
+                                            shoopPoint.transform.forward.z) * bulletForce, ForceMode.Impulse); // Working
 
             DoRecoilAnim();
         }

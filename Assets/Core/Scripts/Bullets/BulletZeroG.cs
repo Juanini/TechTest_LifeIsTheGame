@@ -8,6 +8,12 @@ namespace LifeIsTheGame
     {
         private void OnTriggerEnter(Collider other) 
         {
+            if(other.gameObject.tag == GameConstants.TAG_FLOOR) 
+            { 
+                gameObject.SetActive(false);
+                return; 
+            }
+
             Rigidbody collisionRigidBody = other.GetComponent<Rigidbody>(); 
 
             if(collisionRigidBody == null) { return; }

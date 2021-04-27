@@ -20,12 +20,11 @@ namespace LifeIsTheGame
         [BoxGroup("Animations")] public float recoilDistance = 0.05f;
         [BoxGroup("Animations")] public float recoilTime = 0.1f;
         
-        void Start()
-        {
-        
-        }
+        [HideInInspector] public bool canShoot = false;
 
         bool setupDone = false;
+        
+        void Start() { }
 
         void OnEnable() 
         {   
@@ -43,8 +42,18 @@ namespace LifeIsTheGame
             transform.localEulerAngles = rotationInPlayer;
         }
 
-        public virtual void Fire()
+        public virtual void Fire() { }
+
+        public void CheckFire()
         {
+            canShoot = false;
+            StartCoroutine(ShootSpeedDelay());
+        }
+
+        private IEnumerator ShootSpeedDelay()
+        {
+            yield return new WaitForSeconds(gunData.shootSpeed);
+            canShoot = true;
         }
 
         // * =====================================================================================================================================

@@ -12,7 +12,7 @@ namespace LifeIsTheGame
 
         public float SwirlStrength = 5f;
 
-        void Start () 
+        void Start()
         {
             Setup();
         }
@@ -33,25 +33,9 @@ namespace LifeIsTheGame
             rigidBodyList.Add(_obj);
         }
 
-        [Button(ButtonSizes.Large), GUIColor(0.4f, 0.8f, 1)]
-        public void InitAchis()
-        {
-            foreach(Rigidbody g in rigidBodyList)
-            {
-                //to get them nice and swirly, use the perpendicular to the direction to the vortex
-                Vector3 direction = transform.position - g.transform.position;
-                var tangent = Vector3.Cross(direction, Vector3.up).normalized * SwirlStrength;
-                g.velocity = tangent;
-            }
-
-            initDone = true;
-        }
-
         public bool initDone = false;
         void Update()
         {
-            // if(!initDone) { return; }
-
             //apply the vortex force
             foreach(Rigidbody g in rigidBodyList)
             {

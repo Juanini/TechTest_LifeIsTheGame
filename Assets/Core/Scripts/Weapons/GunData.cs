@@ -5,9 +5,13 @@ using UnityEngine;
 
 namespace LifeIsTheGame
 {
-    [CreateAssetMenu(fileName = "FirearmData", menuName = "ScriptableObjects/FirearmData", order = 1)]
+    [CreateAssetMenu(fileName = "GunData", menuName = "ScriptableObjects/GunData", order = 1)]
     public class GunData : ScriptableObject
     {
+        [BoxGroup("Firearm Properties")]
+        [Range(0.1f, 5f)]
+        public float shootSpeed;
+
         [BoxGroup("Componentes")] 
         [PreviewField(150, ObjectFieldAlignment.Center)]
         public GameObject model;
@@ -15,10 +19,6 @@ namespace LifeIsTheGame
         [BoxGroup("Firearm Properties")]
         [ValueDropdown("FirearmTypeOptions")]
         public int type = 0;
-
-        [BoxGroup("Firearm Properties")]
-        [Range(1, 100)] 
-        public int bulletAmount;
         
         [BoxGroup("Firearm Properties")] 
         public GameObject bullet;
