@@ -6,30 +6,25 @@ namespace LifeIsTheGame
 {
     public class GunZeroG : Gun
     {
-        public float VortexStrength = 1000f;
-        List<GameObject> RigidBodies;
+        public float force = 10;
 
-        public float SwirlStrength = 5f;
-
-        void Start () 
+        public override void Fire()
         {
-            foreach(GameObject g in RigidBodies){
-                //to get them nice and swirly, use the perpendicular to the direction to the vortex
-                Vector3 direction = transform.position - g.transform.position;
-                var tangent = Vector3.Cross(direction, Vector3.up).normalized * SwirlStrength;
-                g.GetComponent<Rigidbody>().velocity = tangent;
-            }
+            ThrowBullet();   
         }
 
-        void Update()
+        private void ThrowBullet()
         {
-            //apply the vortex force
-            foreach(GameObject g in RigidBodies)
-            {
-                //force them toward the center
-                Vector3 direction = transform.position - g.transform.position;
-                g.GetComponent<Rigidbody>().AddForce(direction.normalized * Time.deltaTime * VortexStrength);
-            }
+            GameObject bullet = GetBullet();
+            bullet.transform.position = shoopPoint.transform.position;
+            bullet.gameObject.SetActive(true);
+
+            Rigidbody rigidbody = bullet.GetComponent<Rigidbody>();
+            
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.AddForce(shoopPoint.transform.forward * force, ForceMode.Impulse);
+
+            DoRecoilAnim();
         }
     }
 }

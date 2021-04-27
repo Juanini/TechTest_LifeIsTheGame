@@ -6,6 +6,8 @@ TagManager:
   tags:
   - FxTemporaire
   - WeaponDrop
+  - VFXExplosion
+  - VFXGravityGlow
   layers:
   - Default
   - TransparentFX

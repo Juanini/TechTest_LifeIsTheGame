@@ -8,6 +8,13 @@ namespace LifeIsTheGame
     {
         public float disableTime = 4;
 
+        public Rigidbody rigidbody;
+        
+        void Awake() 
+        {
+            rigidbody = GetComponent<Rigidbody>();    
+        }
+
         private void OnEnable() 
         {
             StartCoroutine(DisableBulletDelay());

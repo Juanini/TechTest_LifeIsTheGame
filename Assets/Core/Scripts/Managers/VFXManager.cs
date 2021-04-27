@@ -27,11 +27,13 @@ namespace LifeIsTheGame
         // * =====================================================================================================================================
         // * 
 
-        public void ShowExplosion(Vector3 _pos)
+        public GameObject ShowEffect(string Tag, Vector3 _pos)
         {
-            GameObject explosionObj = explosionPool.GetPooledObject();
-            explosionObj.transform.position = _pos;
-            explosionObj.gameObject.SetActive(true);
+            GameObject effect = explosionPool.GetPooledObject(Tag);
+            effect.transform.position = _pos;
+            effect.gameObject.SetActive(true);
+
+            return effect; 
         }
     }
 }

@@ -17,7 +17,7 @@ namespace LifeIsTheGame
         private void Expolode()
         {
             // Show Effect
-            VFXManager.Ins.ShowExplosion(transform.position);
+            VFXManager.Ins.ShowEffect(GameConstants.TAG_VFX_EXPLOSION, transform.position);
 
             // Get nearby objects
             Collider[] colliders = Physics.OverlapSphere(transform.position, radius);

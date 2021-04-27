@@ -119,10 +119,10 @@ namespace LifeIsTheGame
 				// DoInput( KeyCode.D, Vector2.right );
 				// DoInput( KeyCode.A, Vector2.left );
 
-                DoInput( KeyCode.UpArrow,    Vector2.up );
-				DoInput( KeyCode.DownArrow,  Vector2.down );
-				DoInput( KeyCode.RightArrow, Vector2.right );
-				DoInput( KeyCode.LeftArrow,  Vector2.left );
+                DoInput( KeyCode.U,    Vector2.up );
+				DoInput( KeyCode.J,  Vector2.down );
+				DoInput( KeyCode.K, Vector2.right );
+				DoInput( KeyCode.H,  Vector2.left );
 
 				// leave focus mode stuff
 				if( Input.GetKeyDown( KeyCode.Escape ) )

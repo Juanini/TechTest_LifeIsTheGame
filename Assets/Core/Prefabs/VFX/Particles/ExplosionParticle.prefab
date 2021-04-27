@@ -4752,8 +4752,8 @@ GameObject:
   - component: {fileID: 6785860154328767056}
   - component: {fileID: 6735276683259461256}
   m_Layer: 0
-  m_Name: Explosion_Particle
-  m_TagString: FxTemporaire
+  m_Name: ExplosionParticle
+  m_TagString: VFXExplosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

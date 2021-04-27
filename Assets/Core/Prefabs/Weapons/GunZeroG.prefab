@@ -125,10 +125,11 @@ MonoBehaviour:
   bulletPool: {fileID: 1077275534}
   shoopPoint: {fileID: 1412911760625175055}
   gunModel: {fileID: 2259331551342691894}
-  positionInPlayer: {x: 0, y: 0, z: 0}
-  rotationInPlayer: {x: 0, y: 0, z: 0}
+  positionInPlayer: {x: 0.5, y: -0.35, z: 1.1}
+  rotationInPlayer: {x: 0, y: 170, z: 0}
   recoilDistance: 0.05
   recoilTime: 0.1
+  force: 40
 --- !u!1001 &1412911760902470503
 PrefabInstance:
   m_ObjectHideFlags: 0
