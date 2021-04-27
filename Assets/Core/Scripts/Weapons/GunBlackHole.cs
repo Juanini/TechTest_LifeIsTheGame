@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ namespace LifeIsTheGame
 {
     public class GunBlackHole : Gun
     {
-        public float BulletForce = 10;
+        [BoxGroup("Properties")] public float BulletForce = 10;
 
         public override void Fire()
         {

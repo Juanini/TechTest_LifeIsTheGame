@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,13 @@ namespace LifeIsTheGame
 {
     public class BulletZeroG : Bullet
     {
+        [BoxGroup("Properties")] public float upForce = 5;
+
         private void OnTriggerEnter(Collider other) 
         {
-            if(other.gameObject.tag == GameConstants.TAG_FLOOR) 
+            if(other.gameObject.tag == GameConstants.TAG_WEAPON_DROP) { return; }
+
+            if(other.gameObject.tag == GameConstants.TAG_FLOOR)
             { 
                 gameObject.SetActive(false);
                 return; 
@@ -30,7 +35,7 @@ namespace LifeIsTheGame
 
             collisionRigidBody.useGravity = false;
             collisionRigidBody.angularDrag = 0;
-            collisionRigidBody.velocity = transform.up * 5;
+            collisionRigidBody.velocity = transform.up * upForce;
         }
     }
 }

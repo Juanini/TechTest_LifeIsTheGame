@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,8 @@ namespace LifeIsTheGame
 {
     public class BulletExplosion : Bullet
     {
-        public float radius = 5;
-        public float explosionForce = 700;
+        [BoxGroup("Properties")] public float radius = 5;
+        [BoxGroup("Properties")] public float explosionForce = 700;
 
         private void OnCollisionEnter(Collision other) 
         {

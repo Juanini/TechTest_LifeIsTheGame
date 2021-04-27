@@ -7,14 +7,19 @@ namespace LifeIsTheGame
 {
     public class BulletBlackHole : Bullet
     {
-        public float VortexStrength = 1000f;
-        private  List<Rigidbody> rigidBodyList;
+        [BoxGroup("Properties")] public float VortexStrength = 1000f;
+        [BoxGroup("Properties")] private  List<Rigidbody> rigidBodyList;
 
         public float SwirlStrength = 5f;
 
         void Start()
         {
             Setup();
+        }
+
+        private void OnDisable() 
+        {
+            rigidBodyList.Clear();
         }
 
         private void Setup()
